@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     
     if @user.update(user_params)
       flash[:notice] = "Success. Updated User Info."
-      redirect_to about_path
+      redirect_to user_path
     else
       flash.now[:alert] = "Error. Could Not Update User Info."
       render :edit
