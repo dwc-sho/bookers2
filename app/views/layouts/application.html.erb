@@ -42,9 +42,9 @@
                 </li>
               <% else %>
               <li>
-                <a class="nav-link text-light" href="/home/about">
+                <%= link_to about_path, class: 'nav-link text-light' do %>
                   <i class="fa-solid fa-link"></i> About
-                </a>
+                <% end %>
               </li>
               <li>
                 <a class="nav-link text-light" href="/users/sign_up">
