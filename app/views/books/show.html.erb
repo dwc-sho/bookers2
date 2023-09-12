@@ -27,8 +27,7 @@
                 <%= link_to "Edit", edit_book_path, class: "btn btn-sm btn-success" %>
               </td>
               <td>
-                <!-- 一時的に link_to -->
-                <a class="btn btn-sm btn-danger">Destroy</a>
+                <%= link_to "Destroy", book_path(@book_detail.id), method: :delete, "data-confirm" => "本当に消しますか？" %>
               </td>
             <% end %>
           </tr>

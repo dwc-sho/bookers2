@@ -40,6 +40,12 @@ class BooksController < ApplicationController
     end
   end
   
+  def destroy
+    book = Book.find(params[:id])
+    book.destroy  # データ（レコード）を削除
+    redirect_to books_path  # 投稿一覧画面へリダイレクト
+  end
+  
   private
   def book_params
     params.require(:book).permit(:title, :body, :image)
