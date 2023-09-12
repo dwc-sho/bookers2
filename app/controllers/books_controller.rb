@@ -12,6 +12,10 @@ class BooksController < ApplicationController
     @user = User.find(@book_detail.user_id)
   end
   
+  def edit
+    @book = Book.find(params[:id])
+  end
+  
   def create
     @book = Book.new(book_params)
     @book.user_id = current_user.id
@@ -21,6 +25,18 @@ class BooksController < ApplicationController
     else
       flash.now[:alert] = "Error"
       redirect_to root_path
+    end
+  end
+  
+  def update
+    @book = Book.find(params[:id])
+    
+    if @book.update(book_params)
+      flash[:notice] = "You have updated book successfully."
+      redirect_to book_path
+    else
+      flash.now[:alert] = "Error. Could Not Update Book Info."
+      render :edit
     end
   end
   
