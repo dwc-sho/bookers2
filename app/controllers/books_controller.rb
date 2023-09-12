@@ -1,14 +1,19 @@
 class BooksController < ApplicationController
+  def index
+    @users = User.all
+    @books = Book.all
+    @user = User.find(current_user.id)
+    @book = Book.new
+  end
+  
   def create
     @book = Book.new(book_params)
     @book.user_id = current_user.id
     if @book.save
-      # 一時的に
-      flash[:notice] = "You have created book successfully."
+      flash[:notice] = "You have created the book successfully."
       redirect_to users_path
     else
-      # 一時的に
-      flash.now[:alert] = "error"
+      flash.now[:alert] = "Error"
       redirect_to root_path
     end
   end
