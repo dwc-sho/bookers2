@@ -22,7 +22,6 @@ class UsersController < ApplicationController
       flash[:notice] = "You have updated user successfully."
       redirect_to user_path
     else
-      flash.now[:alert] = "Error. Could Not Update User Info."
       render :edit
     end
   end
