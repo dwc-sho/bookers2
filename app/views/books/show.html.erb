@@ -24,7 +24,6 @@
             <td><%= @book_detail.body %></td>
             <% if current_user.id == @user.id %>
               <td>
-                <!-- 一時的に link_to -->
                 <%= link_to "Edit", edit_book_path, class: "btn btn-sm btn-success" %>
               </td>
               <td>

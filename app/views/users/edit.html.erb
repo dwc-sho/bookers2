@@ -5,17 +5,17 @@
       
       <%= form_with model: @user do |f| %>
         
-        <div class="form_group">
+        <div class="form-group">
           <%= f.label :name %>
           <%= f.text_field :name, class: "form-control" %>
         </div>
         
-        <div class="form_group">
+        <div class="form-group">
           <%= f.label :profile_image %>
           <%= f.file_field :profile_image, class: "form-control-file" %>
         </div>
         
-        <div class="form_group">
+        <div class="form-group">
           <%= f.label :introduction %>
           <%= f.text_field :introduction, class: "form-control" %>
         </div>
