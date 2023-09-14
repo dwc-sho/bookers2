@@ -22,6 +22,7 @@
             </td>
             <td><%= link_to @book_detail.title, book_path(@book_detail.id) %></td>
             <td><%= @book_detail.body %></td>
+            <td><%= render 'shared/favorite', book: @book_detail %></td>
             <% if current_user.id == @user.id %>
               <td>
                 <%= link_to "Edit", edit_book_path, class: "btn btn-sm btn-success" %>

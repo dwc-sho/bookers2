@@ -1,6 +1,6 @@
 class Favorite < ApplicationRecord
-  validates :user_id, uniqueness: true
-  validates :book_id, uniqueness: true
+  validates :user_id, presence: true
+  validates :book_id, presence: true
   
   belongs_to :user
   belongs_to :book
