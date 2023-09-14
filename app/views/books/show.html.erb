@@ -22,6 +22,7 @@
             </td>
             <td><%= link_to @book_detail.title, book_path(@book_detail.id) %></td>
             <td><%= @book_detail.body %></td>
+            <td><%= render 'shared/favorite', book: @book_detail %></td>
             <% if current_user.id == @user.id %>
               <td>
                 <%= link_to "Edit", edit_book_path, class: "btn btn-sm btn-success" %>
@@ -30,9 +31,42 @@
                 <%= link_to "Destroy", book_path(@book_detail.id), method: :delete, class: "btn btn-sm btn-danger", "data-confirm" => "本当に消しますか？" %>
               </td>
             <% end %>
+            <td><%= render 'shared/number_of_comments', book: @book_detail %></td>
           </tr>
         </tbody>
       </table>
+      
+      <table>
+        <tbody>
+          <% @book_detail.book_comments.each do |book_comment| %>
+            <tr>
+              <td>
+                <%= link_to user_path(book_comment.user.id) do %>
+                  <%= image_tag book_comment.user.get_profile_image(100,100) %>
+                  <br />
+                  <%= book_comment.user.name %>
+                <% end %>
+              </td>
+              <td>
+                <%= book_comment.comment %>
+              </td>
+              <td>
+                <% if book_comment.user.id == current_user.id %>
+                  <%= link_to "Destroy", book_book_comment_path(book_comment.book, book_comment), method: :delete, class: "btn btn-danger" %>
+                <% end %>
+              </td>
+              <br />
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      
+      <div>
+        <%= form_with model: [@book_detail, @book_comment] do |f| %>
+          <%= f.text_area :comment, rows: '5' %>
+          <%= f.submit "送信" %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
